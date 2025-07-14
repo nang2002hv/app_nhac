@@ -1,0 +1,39 @@
+server:
+  port: ${PORT:8080}
+  tomcat:
+    threads:
+      max: 20000
+
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 70MB
+
+
+hikari:
+  minimum-idle: 1500
+  maximum-pool-size: 30000
+  idle-timeout: 30000
+  max-lifetime: 1800000
+  connection-test-query: SELECT 1
+  pool-name: ApiAppHikariPool
+  driverClass: org.mysql.cj.jdbc.Driver
+
+database:
+  jdbcUrl: ${DB_URL:jdbc:mysql://localhost:3306/music}
+  username: ${DB_USERNAME:root}
+  password: ${DB_PASSWORD:20052002}
+
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        ddl-auto: none
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 10
+        generate_statistics: false
+    generate-ddl: false
